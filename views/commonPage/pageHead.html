@@ -1,0 +1,27 @@
+<link href="/public/stylesheets/commonPage/pageHead.css" rel="stylesheet">
+<div class="menu-outer-div">
+    <div class="page-menu-div">
+        <div class="page-log-div">
+            <a href="index">
+                <img class="log-img" src="/public/images/index/log.png">
+            </a>
+        </div>
+        <div class="page-menu-content-div">
+            <span class="type-menu-name">宝贝类型
+                <ul class="shop-menu-ul">
+                    <% for(var i=0;i < menuData.length;i++){ %>
+                        <a href="./index?id=<%= menuData[i].typeNum %>">
+                            <li><%= menuData[i].typeName %></li>
+                        </a>
+                    <% } %>
+                </ul>
+            </span>
+        </div>
+        <div class="log-sign-div">
+            <a href="/login"><span class="l-s-text">登录</span></a>
+            <a href="/sign"><span class="l-s-text">注册</span></a>
+        </div>
+    </div>
+</div>
+<script src="/public/javascripts/tool/jquery-3.2.1.min.js" type="application/javascript"></script>
+

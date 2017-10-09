@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="一个人,yigeren,yi-ge-ren,导购,推荐">
+    <meta name="description" content="世上最艰难的工作是什么？思想。凡是值得思想的事情，没有不是人思考过的；我们必须做的只是试图重新加以思考而已。给你提供最好。一个人的承诺">
+    <link rel="shortcut icon" href="/public/images/index/Favicon.ico" mce_href=images/common/Favicon.ico""  type="image/x-icon"/>
+    <title>一个人</title>
+    <link rel="stylesheet" href="/public/stylesheets/userPage/login.css">
+</head>
+<body>
+    <%include ../commonPage/pageHead.html %>
+        <div class="login-page-all">
+    <div class="content-div">
+        <div class="scroll-div">
+            <!--<div class="find-div">-->
+                <!--<span class="user-lable">找回密码</span><span class="back">返回登录</span>-->
+                <!--<div class="rows"></div>-->
+                <!--<div class="rows">-->
+                    <!--<span class="lable">用户名</span>-->
+                    <!--<input  placeholder="邮箱" type="email" id="findPasswordEmail" class="input">-->
+                    <!--<span id="sendFindPasswordEmail" class="notice-span">发送邮件</span>-->
+                <!--</div>-->
+                <!--<div class="rows">-->
+                    <!--<span class="lable">验证码</span>-->
+                    <!--<input placeholder="邮件验证码" pattern="[0-9]{8}" type="type" class="input" id="FindPasswordEmailAuthor">-->
+                <!--</div>-->
+                <!--<div class="rows password-outer-div">-->
+                    <!--<span class="lable">新密码</span>-->
+                    <!--<input placeholder="6-20位密码" pattern="[0-9A-Za-z]{6,20}" type="password" class="input" id="newPassword">-->
+                <!--</div>-->
+                <!--<div class="rows password-outer-div">-->
+                    <!--<span class="lable">再次密码</span>-->
+                    <!--<input placeholder="请再输一次密码" pattern="[0-9A-Za-z]{6,20}" type="password" class="input" id="newAgainPassword">-->
+                <!--</div>-->
+                <!--<div class="rows">-->
+                    <!--<div id="findPasswordOK" class="save-button sign-ok-button">确认</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="login-div">
+                <span class="user-lable">登录</span>
+                <div class="rows"></div>
+                <div class="rows">
+                    <span class="lable">用户名</span>
+                    <input  placeholder="用户名/邮箱" type="text" id="loginUserName" class="input">
+                </div>
+                <div class="blank-div"></div>
+                <div class="rows">
+                    <span class="lable">密码</span>
+                    <input placeholder="密码"  type="password" id="loginPassword" class="input">
+                </div>
+                <div class="lable-div">
+                    <a href="/forgetPassword"><span class="find-password" id="findPasswordClick">忘记密码，找回</span></a>
+                    <a href="/sign"><span class="go-sign" id="signClick">还未注册，去注册</span></a>
+                </div>
+                <div class="blank-div"></div>
+                <div class="rows">
+                    <div id="LoginOk" class="save-button sign-ok-button">登录</div>
+                </div>
+            </div>
+            <!--<div class="sign-div">-->
+                <!--<span class="user-lable">用户注册</span><span class="back">返回登录</span>-->
+                <!--<div class="blank-div"></div>-->
+                <!--<div class="rows">-->
+                    <!--<span class="lable">邮箱</span>-->
+                    <!--<input placeholder="注意邮件格式" type="email" class="input" id="email">-->
+                    <!--<span id="sendLoginEmail" class="notice-span">发送邮件</span>-->
+                <!--</div>-->
+                <!--<div class="rows">-->
+                    <!--<span class="lable">用户名</span>-->
+                    <!--<input type="type" placeholder="6-20位用户名" class="input" id="signUserName">-->
+                <!--</div>-->
+                <!--<div class="rows">-->
+                    <!--<span class="lable">验证码</span>-->
+                    <!--<input placeholder="邮件验证码" pattern="[0-9]{8}" type="type" class="input" id="signEmailAuthor">-->
+                <!--</div>-->
+                <!--<div class="rows password-outer-div">-->
+                    <!--<span class="lable">密码</span>-->
+                    <!--<input placeholder="6-20位密码" pattern="[0-9A-Za-z]{6,20}" type="password" class="input" id="SignPassword">-->
+                <!--</div>-->
+                <!--<div class="rows password-outer-div">-->
+                    <!--<span class="lable">再次密码</span>-->
+                    <!--<input placeholder="请再输一次密码" pattern="[0-9A-Za-z]{6,20}" type="password" class="input" id="againPassword">-->
+                <!--</div>-->
+                <!--<div class="rows password-outer-div">-->
+                    <!--<span class="lable">邀请码</span>-->
+                    <!--<input placeholder="邀请码" pattern="[0-9A-Za-z]{20}" type="input" class="input" id="InvitationCode">-->
+                <!--</div>-->
+                <!--<div class="rows">-->
+                    <!--<div id="SignOk" class="save-button sign-ok-button">注册</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+    <%include ../commonPage/foot.html %>
+</body>
+    <script src="/public/javascripts/userPage/login.js" type="application/javascript"></script>
+</html>

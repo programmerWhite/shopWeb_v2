@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="一个人,yigeren,yi-ge-ren,导购,推荐">
+    <meta name="description" content="世上最艰难的工作是什么？思想。凡是值得思想的事情，没有不是人思考过的；我们必须做的只是试图重新加以思考而已。给你提供最好。一个人的承诺">
+    <link rel="shortcut icon" href="/public/images/index/Favicon.ico" mce_href=images/common/Favicon.ico""  type="image/x-icon"/>
+    <title>一个人</title>
+    <link rel="stylesheet" href="/public/stylesheets/index.css">
+</head>
+<body>
+    <div class="page-all-div">
+        <% include  ./commonPage/pageHead.html %>
+        <div class="page-content-div">
+            <div class="hot-shop-div">
+                <div class="hot-content-div">
+                    <div class="hot-head-div">
+                        <div class="hot-text-div">
+                            <span class="hot-text-span">热门推荐</span>
+                        </div>
+                    </div>
+                    <% for(var i=0;i< hotData.length;i++) {%>
+                        <div class="hot-shop-one-div">
+                            <div class="hot-one-photo-div"><%- hotData[i].previewContent %></div>
+                            <div class="hot-text-content-div">
+                                <a href="shopOne?id=<%= hotData[i].id %>">
+                                    <div class="hot-one-title-div"><%= hotData[i].goodName %></div>
+                                </a>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="current-shop-div">
+                <div class="shop-container-div">
+                    <% for(var i=0;i < shopData.length; i++) {%>
+                        <div class="search-shop-one-div">
+                            <div class="search-one-photo-div"><%- shopData[i].previewContent %></div>
+                            <div class="search-text-content-div">
+                                <a href="shopOne?id=<%= shopData[i].id %>">
+                                    <div class="search-one-title-div"><%= shopData[i].goodName %>
+                                        <span class="price-span">
+                                            <% if(!!shopData[i].couponUrl){ %>
+                                                <span>券后</span>
+                                            <% } %>
+                                            <%= shopData[i].price %>元
+                                            <% if(shopData[i].freight == 1){ %>
+                                                <span>包邮</span>
+                                            <% } %>
+                                        </span>
+                                    </div>
+                                </a>
+                                <div class="search-one-desc-div" dataId="<%= shopData[i].id %>"></div>
+                                <div class="shop-one-other-div">
+                                    <span class="author-text-div">贡献者：<%= shopData[i].author %></span>
+                                    <span class="hot-text-span">
+                                        <img src="/public/images/index/hot.gif">
+                                        热度：<%= shopData[i].scanTimes %>
+                                    </span>
+                                    <a  class="go-shop-one-page" href="shopOne?id=<%= shopData[i].id %>">
+                                        <span>查看详情 &gt;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="page-container-div">
+                    <% if(pageObj.allPage >= 1){ %>
+                        <% if(pageObj.currentPage > 1){ %>
+                            <a href="index?pageNum=<%= parseInt(pageObj.currentPage)-1 %>"><span>上一页</span></a>
+                        <% }else{ %>
+                                <span>上一页</span>
+                        <% } %>
+                        <% for(var i=1;i<=pageObj.allPage;i++){ %>
+                            <% if(i==pageObj.currentPage){ %>
+                                <a href="index?pageNum=<%= i %>"><span class="current-page-number page-number-span"><%= i %></span></a>
+                            <% }else{ %>
+                                <a href="index?pageNum=<%= i %>"><span class="page-number-span"><%= i %></span></a>
+                            <% } %>
+                        <% } %>
+                        <% if(pageObj.currentPage < pageObj.allPage){ %>
+                            <a href="index?pageNum=<%= parseInt(pageObj.currentPage)+1 %>"><span>下一页</span></a>
+                        <% }else{ %>
+                            <span>下一页</span>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <% include ./commonPage/foot.html %>
+    <textarea style="display: none"><%= JSON.stringify(shopData) %></textarea>
+</body>
+<script src="/public/javascripts/index.js" type="application/javascript"></script>
+
+</html>

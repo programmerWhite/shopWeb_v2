@@ -1,0 +1,125 @@
+/*
+@import "/stylesheets/font/font.css";
+*/
+*{
+    padding: 0px ;
+    margin: 0px ;
+}
+.login-page-all{
+    witth:100%;
+    min-width: 400px;
+}
+.content-div{
+    width: 400px;
+    height:400px;
+    border: 1px solid #cccccc;
+    margin: 100px auto;
+    overflow: hidden;
+}
+.scroll-div{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    transition: all 0.3s ease-in;
+}
+.login-div,.sign-div,.find-div{
+    float: left;
+    width: 380px;
+    height: 380px;
+    padding: 10px;
+}
+.user-lable{
+    font-size: 20px;
+    padding: 2px 10px;
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    background-color: white;
+}
+.rows{
+    width: 100%;
+    height: 50px;
+}
+.lable{
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: right;
+    font-size: 14px;
+    color: #666666;
+}
+.input{
+    margin-left: 20px;
+    height: 26px;
+    width: 180px;
+    border:none;
+    border-bottom: 1px solid #cccccc;
+    padding: 0 10px;
+}
+.input:focus{
+    border-color: #55A1FE;
+}
+.sign-ok-button{
+    width:100px;
+    margin:0 auto;
+    display: block !important;
+    margin-top: 0px;
+}
+.password-outer-div{
+
+}
+.save-button{
+    background-color: #55A1FE;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 180px;
+    border-radius: 6px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+}
+.notice-span{
+    font-size: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #666666;
+}
+.notice-span:hover{
+    color: #333333;
+}
+.blank-div{
+    height: 20px;
+}
+.go-sign{
+    font-size: 10px;
+    float: right;
+    cursor: pointer;
+    color: #999999;
+}
+.go-sign:hover,.find-password:hover{
+    color: #333333;
+}
+.lable-div{
+    width:220px;
+    height: 20px;
+    margin: 0 auto ;
+}
+.find-password{
+    font-size: 10px;
+    float: left;
+    cursor: pointer;
+    color: #999999;
+    margin-left: 25px;
+}
+.back{
+    margin-left:230px;
+    font-size: 12px;
+    color: #999999;
+    cursor: pointer;
+}
+.back:hover{
+    color: #333333;
+}
