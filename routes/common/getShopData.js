@@ -70,7 +70,6 @@ function getShopData(req,res,callback){
         }
         tempSqlString += ' ORDER BY upLoadTime DESC limit ?,?';
         parame.push(30*(pageNum-1),pageNum*30);
-
         query(tempSqlString,parame,function(err,vals,fileds) {
             if(!!err){
                 senData('new',"error");

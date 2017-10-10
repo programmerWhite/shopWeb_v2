@@ -40,7 +40,6 @@ module.exports = function (app) {
 };
 
 function indexPage(req, res, next){
-
     getShopData(req,res,function(data) {
         res.render('index',
             {
