@@ -17,26 +17,35 @@ module.exports = function (app) {
 
     app.get('/login',function (req,res,next) {
         getMenuData(req,res,function(err,vals,fileds){
-            res.render('userPage/login',{menuData:vals});
+            var errorData = "";
+            if(req.query.type == 1){
+                errorData="请检查用户名或密码是否正确";
+            }
+            res.render('userPage/login',{menuData:vals,errorData:errorData});
         });
     });
 
     app.get('/userPage/sign',function (req,res,next) {
         res.render('userPage/sign');
     });
+
     app.get('/forgetPassword',function (req,res,next) {
         getMenuData(req,res,function(err,vals,fileds){
             res.render('userPage/forgetPassword',{menuData:vals});
-
         });
     });
     app.get('/sign',function (req,res,next) {
         getMenuData(req,res,function(err,vals,fileds){
             res.render('userPage/sign',{menuData:vals});
-
         });
     });
 
+    app.get('/userDetail',function (req,res,next) {
+        console.log(req.session.userData)
+        getMenuData(req,res,function(err,vals,fileds){
+            res.render('userPage/userDetail',{menuData:vals});
+        });
+    });
 };
 
 function indexPage(req, res, next){

@@ -4,9 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 
 var app = express();
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+app.use(cookieParser('wy910823'));
+app.use(session({
+  secret: 'keyboard cat',
+  resave:true,
+  saveUninitialized:true,
+  cookie: {maxAge: 1000*60*30}
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +40,8 @@ var index = require('./routes/admin');
 index(app);
 var users = require('./routes/users');
 users(app);
+var loginSign = require('./routes/loginSignRoutes');
+loginSign(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
