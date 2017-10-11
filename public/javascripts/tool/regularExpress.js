@@ -47,7 +47,7 @@ Regex_tool.prototype.parentLoginName = function (string) {
 };
 
 Regex_tool.prototype.password = function (string) {
-    if(string.length > 2 && string.length < 20 && string.indexOf(" ") == -1){
+    if(string.length > 6 && string.length < 20 && string.indexOf(" ") == -1){
         return true;
     }else{
         return false;
@@ -63,5 +63,3 @@ Regex_tool.prototype.email = function (string) {
         return false;
     }
 };
-
-module.exports = Regex_tool;
