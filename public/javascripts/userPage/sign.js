@@ -37,6 +37,14 @@ function sentAuthorEmail(){
             dataType: "json",
             success: function(data){
                 console.log(data);
+                if(data.type == 2 || data.type == 1 || data.type == 0){
+                    var noticeError = $('<span class="notice-error">'+data.response+'</span>');
+                    $('#email').after(noticeError);
+                    noticeError.css({
+                        'left':'105px',
+                        'top':'38px'
+                    });
+                }
             }
         });
     }

@@ -51,9 +51,6 @@ module.exports = function(app){
 
 
 function senEmail(emailUrl,req,res){
-
-    console.log(emailUrl)
-
     var smtpTransport = nodemailer.createTransport("SMTP",{
         host: "smtp.qq.com", // 主机
         secureConnection: true, // 使用 SSL
@@ -63,12 +60,10 @@ function senEmail(emailUrl,req,res){
             pass: "xguscbrqqxkdbahg" // 密码
         }
     });
-    console.log(456456)
     // 设置邮件内容
     var sendAuthor=produceRandomNum(8);
     var emailAuthor=emailUrl+"#"+sendAuthor+"@";
 
-    console.log(emailUrl)
 
     var mailOptions = {
         from: "Fred Foo <641812518@qq.com>", // 发件地址
@@ -92,12 +87,11 @@ function senEmail(emailUrl,req,res){
                             "response":"系统异常",
                             "type":0
                         }));
-                        console.log(error);
                     }else{
                         req.session.sendAuthor=sendAuthor;
 
                         res.end(JSON.stringify({
-                            "response":"邮件发送成功，请查看验证码",
+                            "response":"邮件发送成功，请到邮件箱查看验证码",
                             "type":1
                         }));
                     }
