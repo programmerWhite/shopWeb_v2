@@ -10,6 +10,7 @@ var nodemailer = require("nodemailer");
 var regularExpress = require('./common/regularExpress');
 
 module.exports = function(app){
+    /*登录认证*/
     app.post('/loginSignManage',function(req,res,next){
         var loginCertification = new loginSign(req,res);
         loginCertification.loginCertification(function(data){
@@ -32,7 +33,7 @@ module.exports = function(app){
             }
         });
     });
-
+    /*发送邮件验证码*/
     app.post('/sentEmail',function(req,res,next){
         var email = req.body.email;
 
@@ -45,6 +46,36 @@ module.exports = function(app){
             }));
         }else{
             senEmail(email,req,res);
+        }
+    });
+    /*注册用户*/
+    app.post('/signUser',function(req,res,next){
+        if(req.body.signEmailAuthor != req.session.sendAuthor && 0){
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({
+                'obj':'againPassword',
+                'errorText':'你输入的邮件验证码不正确'
+            }));
+        }else{
+            var postData = {
+                'email':req.body.email,
+                'signUserName':req.body.signUserName,
+                'signEmailAuthor':req.body.signEmailAuthor,
+                'SignPassword':req.body.SignPassword,
+                'againPassword':req.body.againPassword,
+                'InvitationCode':req.body.InvitationCode
+            };
+
+            var loginCertification = new loginSign(req,res);
+            loginCertification.signUser(postData,function(data){
+                console.log(data)
+                if(data == 'error'){
+                    res.direction('/error');
+                }else{
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    res.end(JSON.stringify(data));
+                }
+            });
         }
     });
 };

@@ -112,7 +112,7 @@ function signUser(){
         yesNo = 0;
     }
 
-    if(signEmailAuthor != "" || signEmailAuthor != " "){
+    if(signEmailAuthor == "" || signEmailAuthor == " "){
         var signEmailAuthorNoticeError = noticeError.clone();
         signEmailAuthorNoticeError.text("邮件验证码不能为空");
         $('#signEmailAuthor').after(signEmailAuthorNoticeError);
@@ -124,6 +124,30 @@ function signUser(){
     }
 
     if(yesNo == 1){
-
+        var postData = {
+            'email':email,
+            'signUserName':signUserName,
+            'signEmailAuthor':signEmailAuthor,
+            'SignPassword':SignPassword,
+            'againPassword':againPassword,
+            'InvitationCode':InvitationCode
+        }
+        $.ajax({
+            type: "POST",
+            url: "/signUser",
+            data:postData,
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+                if(data.type == 2 || data.type == 1 || data.type == 0){
+                    var noticeError = $('<span class="notice-error">'+data.response+'</span>');
+                    $('#email').after(noticeError);
+                    noticeError.css({
+                        'left':'105px',
+                        'top':'38px'
+                    });
+                }
+            }
+        });
     }
 }
