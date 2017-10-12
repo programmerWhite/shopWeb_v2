@@ -16,6 +16,7 @@
     "mysql":"",
     "promise":"",
     "crypto":"",
-    "express-session":""
+    "express-session":"",
+    "nodemailer":"v0.7.1"
   }
 }
