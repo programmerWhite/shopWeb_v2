@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #outerDiv{
+            height: 600px;width: 400px;overflow: hidden;position: relative;
+            border-radius: 10px;
+        }
+        #innerDiv{
+            width: 100%;background-color: #666666;position: absolute;left: 0px;
+            text-align: center;
+            color: white;
+            line-height: 40px;
+            -webkit-transition: all 1s ease-out;
+            -moz-transition: all 1s ease-out;
+            -ms-transition: all 1s ease-out;
+            -o-transition: all 1s ease-out;
+            transition: all 1s ease-out;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="outerDiv" style="">
+    <div id="innerDiv" style="top: 0px"></div>
+</div>
+</body>
+<script src="eventTest.js"></script>
+</html>
