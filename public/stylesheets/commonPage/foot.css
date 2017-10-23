@@ -144,9 +144,12 @@
     font-size: 30px;
     border-radius: 6px;
     background-color: rgba(246,65,65,0.4);
+    cursor: pointer;
+    display: none;
 }
 .go-top-div:hover{
-
+    background-color: white;
+    color: #f64141;
 }
 @media (max-width: 767px) {
     .text-lote{

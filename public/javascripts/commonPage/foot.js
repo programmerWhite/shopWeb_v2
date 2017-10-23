@@ -34,3 +34,15 @@
         window.open(_shareUrl,'_blank','width='+_width+',height='+_height+',left='+(screen.width-_width)/2+',top='+(screen.height-_height)/2+',toolbar=no,menubar=no,scrollbars=no,resizable=1,location=no,status=0');
     });
 //});
+
+$(window).scroll(function(){
+    if($(window).scrollTop() > 200){
+        $('.go-top-div').show();
+    }else{
+        $('.go-top-div').hide();
+    }
+});
+
+$('.go-top-div').off().on('click',function(){
+    $(window).scrollTop(0);
+});
