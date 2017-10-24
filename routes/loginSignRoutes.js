@@ -68,7 +68,6 @@ module.exports = function(app){
 
             var loginCertification = new loginSign(req,res);
             loginCertification.signUser(postData,function(data){
-                console.log(data)
                 if(data == 'error'){
                     res.direction('/error');
                 }else{

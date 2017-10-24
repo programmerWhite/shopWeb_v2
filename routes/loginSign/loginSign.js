@@ -125,17 +125,17 @@ loginSignManage.prototype.signUser = function(data,callback){
     }
 
     if(yesNo == 1){
-        query('select count(*) as number from user where invitationCode=?',[data.InvitationCode],function(err,vals,files){
-            if(err){
-                callback("error");
-            }else{
-                console.log(vals[0].number)
-                if(vals[0].number == 0){
-                    callback({
-                        'obj':'invitationCode',
-                        'errorText':'邀请码不存在，如果没有可以不填'
-                    });
-                }else{
+        //query('select count(*) as number from user where invitationCode=?',[data.InvitationCode],function(err,vals,files){
+        //    if(err){
+        //        callback("error");
+        //    }else{
+        //        console.log(vals[0].number)
+        //        if(vals[0].number == 0){
+        //            callback({
+        //                'obj':'invitationCode',
+        //                'errorText':'邀请码不存在，如果没有可以不填'
+        //            });
+        //        }else{
                     query('select count(*) as userNum from user where userName=?',[data.signUserName],function(err,vals,files){
                         if(err){
                             callback("error");
@@ -146,15 +146,14 @@ loginSignManage.prototype.signUser = function(data,callback){
                                     'errorText':'用户名已存在'
                                 });
                             }else{
-                                console.log(12312)
                                 var buf = new Buffer(data.SignPassword);
                                 var str = buf.toString("binary");
                                 var password = crypto.createHash("md5").update(str).digest("hex");
 
-                                query('insert into user values(userName,password,email,invitationCode,registrationTime,) values(?,?,?,?,?)',
+                                query('insert into user (userName,password,email,invitationCode,registrationTime) values(?,?,?,?,?)',
                                     [data.signUserName,password,data.email,data.invitationCode,Date.parse(new Date())],
                                     function(err,vals,files){
-                                        console.log(vals);
+                                        console.log(vals+"jka");
                                         callback(vals);
                                     }
                                 );
@@ -162,9 +161,9 @@ loginSignManage.prototype.signUser = function(data,callback){
 
                         }
                     });
-                }
-            }
-        });
+        //        }
+        //    }
+        //});
 
     }else{
         callback(errorData);
