@@ -43,9 +43,9 @@ module.exports = function (app) {
     app.get('/userDetail',function (req,res,next) {
         getMenuData(req, res, function (err, vals, fileds) {
             if (!!req.session.userData) {
-                res.render('userPage/userDetail', {menuData: vals});
+                res.render('userPage/userDetail',{menuData:vals});
             } else {
-                res.render('userPage/login', {menuData: vals});
+                res.redirect('/login');
             }
         });
     });
