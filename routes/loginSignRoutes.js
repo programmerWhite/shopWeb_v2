@@ -21,12 +21,10 @@ module.exports = function(app){
                     "response": '系统异常'
                 }));
             }else{
+                console.log(data)
                 if(data.userData != 0){//登录成功，跳转到用户详情页面
-
                     req.session.userData = data.userData[0];
-
                     res.redirect('/userDetail');
-
                 }else{//登录失败，跳转到登录页面
                     res.redirect('/login?type=1');
                 }
@@ -45,41 +43,150 @@ module.exports = function(app){
                 "type":3
             }));
         }else{
-            senEmail(email,req,res);
-        }
-    });
-    /*注册用户*/
-    app.post('/signUser',function(req,res,next){
-        if(req.body.signEmailAuthor != req.session.sendAuthor && 0){
-            res.writeHead(200, {'Content-Type': 'application/json'});
-            res.end(JSON.stringify({
-                'obj':'againPassword',
-                'errorText':'你输入的邮件验证码不正确'
-            }));
-        }else{
-            var postData = {
-                'email':req.body.email,
-                'signUserName':req.body.signUserName,
-                'signEmailAuthor':req.body.signEmailAuthor,
-                'SignPassword':req.body.SignPassword,
-                'againPassword':req.body.againPassword,
-                'InvitationCode':req.body.InvitationCode
-            };
-
-            var loginCertification = new loginSign(req,res);
-            loginCertification.signUser(postData,function(data){
-                if(data == 'error'){
-                    res.direction('/error');
-                }else{
+            // 验证邮件是否存在
+            query('select * from user where email=?',email,function(err,rows){
+                if(err){
                     res.writeHead(200, {'Content-Type': 'application/json'});
-                    res.end(JSON.stringify(data));
+                    res.end(JSON.stringify({
+                        "exception":'true'
+                    }));
+                }else{
+                    if(rows==""){
+                        senEmail(email,req,res);
+                    }else{
+                        res.writeHead(200, {'Content-Type': 'application/json'});
+                        res.end(JSON.stringify({
+                            "response":"邮箱已经被注册",
+                            "type":2
+                        }));
+                    }
                 }
+
             });
         }
     });
+
+    /*找回密码发送邮件*/
+    app.post('/findPasswordSentEmail',function(req,res,next){
+        var email = req.body.email;
+
+        var reg_obj = new regularExpress();
+        if(!reg_obj.email(email)){
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({
+                "response":"请检查邮件的格式是否正确",
+                "type":3
+            }));
+        }else{
+            // 验证邮件是否存在
+            query('select * from user where email=?',email,function(err,rows){
+                if(err){
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    res.end(JSON.stringify({
+                        "exception":'true'
+                    }));
+                }else{
+                    if(rows==""){
+                        res.writeHead(200, {'Content-Type': 'application/json'});
+                        res.end(JSON.stringify({
+                            "response":"邮箱不存在",
+                            "type":2
+                        }));
+                    }else{
+                        senEmail(email,req,res);
+                    }
+                }
+
+            });
+        }
+    });
+
+    /*注册用户*/
+    app.post('/signUser',function(req,res,next){
+
+        if(req.body.signEmailAuthor != req.session.sendAuthor.authorCode){
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({
+                'obj':'signEmailAuthor',
+                'errorText':'你输入的邮箱验证码不正确'
+            }));
+        }else{
+           if(req.session.sendAuthor.email != req.body.email){
+               res.writeHead(200, {'Content-Type': 'application/json'});
+               res.end(JSON.stringify({
+                   'obj':'email',
+                   'errorText':'你输入的邮箱和验证码邮箱不一样'
+               }));
+           }else{
+               var postData = {
+                   'email':req.body.email,
+                   'signUserName':req.body.signUserName,
+                   'signEmailAuthor':req.body.signEmailAuthor,
+                   'SignPassword':req.body.SignPassword,
+                   'againPassword':req.body.againPassword,
+                   'InvitationCode':req.body.InvitationCode
+               };
+
+               var loginCertification = new loginSign(req,res);
+               loginCertification.signUser(postData,function(data){
+                   if(data == 'error'){
+                       res.direction('/error');
+                   }else{
+                       if(data.affectedRows == 1){
+                           res.writeHead(200, {'Content-Type': 'application/json'});
+                           res.end(JSON.stringify({
+                               'type':'4'
+                           }));
+                       }
+                   }
+               });
+           }
+        }
+    });
+
+    app.post('/findPassword',function(req,res,next){
+        if(req.body.signEmailAuthor != req.session.sendAuthor.authorCode){
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({
+                'obj':'signEmailAuthor',
+                'errorText':'你输入的邮箱验证码不正确'
+            }));
+        }else {
+            if (req.session.sendAuthor.email != req.body.email) {
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.end(JSON.stringify({
+                    'obj': 'email',
+                    'errorText': '你输入的邮箱和验证码邮箱不一样'
+                }));
+            } else {
+                var postData = {
+                    'email':req.body.email,
+                    'SignPassword':req.body.SignPassword,
+                    'againPassword':req.body.againPassword,
+                    'signEmailAuthor':req.body.signEmailAuthor
+                };
+                var loginCertification = new loginSign(req,res);
+                console.log(12)
+                loginCertification.findPassword(postData,function(data){
+                    console.log(data)
+                    if(data == 'error'){
+                        res.direction('/error');
+                    }else{
+                        if(data.affectedRows == 1){
+                            res.writeHead(200, {'Content-Type': 'application/json'});
+                            res.end(JSON.stringify({
+                                'type':'1'
+                            }));
+                        }
+                    }
+                });
+            }
+        }
+
+    });
 };
 
-
+/*发送邮件*/
 function senEmail(emailUrl,req,res){
     var smtpTransport = nodemailer.createTransport("SMTP",{
         host: "smtp.qq.com", // 主机
@@ -94,49 +201,36 @@ function senEmail(emailUrl,req,res){
     var sendAuthor=produceRandomNum(8);
     var emailAuthor=emailUrl+"#"+sendAuthor+"@";
 
-
     var mailOptions = {
         from: "Fred Foo <641812518@qq.com>", // 发件地址
         to: emailUrl, // 收件列表
         subject: "一个人导购", // 标题
         html: "你好！"+emailUrl+"<b>欢迎注册一个人购物推荐网站!</b><br/>验证码: "+sendAuthor  // html 内容
-    }
-    // 发送邮件
-    query('select * from user where email=?',emailUrl,function(err,rows){
-        if(err){
-            res.writeHead(200, {'Content-Type': 'application/json'});
+    };
+
+    console.log(sendAuthor);
+
+    smtpTransport.sendMail(mailOptions, function(error, response){
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        if(error){
             res.end(JSON.stringify({
-                "exception":'true'
+                "response":"系统异常",
+                "type":0
             }));
         }else{
-            if(rows==""){
-                smtpTransport.sendMail(mailOptions, function(error, response){
-                    res.writeHead(200, {'Content-Type': 'application/json'});
-                    if(error){
-                        res.end(JSON.stringify({
-                            "response":"系统异常",
-                            "type":0
-                        }));
-                    }else{
-                        req.session.sendAuthor=sendAuthor;
+            req.session.sendAuthor={
+                'email':emailUrl,
+                'authorCode':sendAuthor
+            };
 
-                        res.end(JSON.stringify({
-                            "response":"邮件发送成功，请到邮件箱查看验证码",
-                            "type":1
-                        }));
-                    }
-                    smtpTransport.close(); // 如果没用，关闭连接池
-                });
-            }else{
-                res.writeHead(200, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify({
-                    "response":"邮箱已经被注册",
-                    "type":2
-                }));
-            }
+            res.end(JSON.stringify({
+                "response":"邮件发送成功，请到邮件箱查看验证码",
+                "type":1
+            }));
         }
-
+        smtpTransport.close(); // 如果没用，关闭连接池
     });
+
 }
 
 function produceRandomNum(length){

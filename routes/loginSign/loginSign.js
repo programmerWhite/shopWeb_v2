@@ -24,7 +24,7 @@ loginSignManage.prototype.loginCertification = function(callback){
 
     if(this.regObj.email(userName)){
         /*表示用户名符合邮箱的格式，判断为邮箱登录*/
-        var tempSqlString = "select count(*) as dataNum from user where email=? and password=?";
+        var tempSqlString = "select email,maxUpNum,hadUpNum,nickName as dataNum from user where email=? and password=?";
         var parames = [userName,password];
     }else{
         if(this.regObj.loginName(userName)){
@@ -124,6 +124,14 @@ loginSignManage.prototype.signUser = function(data,callback){
         yesNo = 0;
     }
 
+    if(data.InvitationCode){
+        errorData.push({
+            'obj':'signEmailAuthor',
+            'errorText':'邮件验证码不正确'
+        });
+        yesNo = 0;
+    }
+
     if(yesNo == 1){
         //query('select count(*) as number from user where invitationCode=?',[data.InvitationCode],function(err,vals,files){
         //    if(err){
@@ -153,7 +161,6 @@ loginSignManage.prototype.signUser = function(data,callback){
                                 query('insert into user (userName,password,email,invitationCode,registrationTime) values(?,?,?,?,?)',
                                     [data.signUserName,password,data.email,data.invitationCode,Date.parse(new Date())],
                                     function(err,vals,files){
-                                        console.log(vals+"jka");
                                         callback(vals);
                                     }
                                 );
@@ -170,5 +177,53 @@ loginSignManage.prototype.signUser = function(data,callback){
     }
 };
 
+loginSignManage.prototype.findPassword = function(data,callback){
+    var yesNo = 1;
+
+    var errorData = [];
+    if(!this.regObj.email(data.email)){
+        errorData.push({
+            'obj':'email',
+            'errorText':'你输入的邮件格式不正确'
+        });
+        yesNo = 0;
+    }
+
+    if(!this.regObj.password(data.SignPassword)){
+        errorData.push({
+            'obj':'signUserName',
+            'errorText':'密码需要6-20位'
+        });
+        yesNo = 0;
+    }
+
+    if(data.SignPassword != data.againPassword){
+        errorData.push({
+            'obj':'againPassword',
+            'errorText':'两次密码不一样'
+        });
+        yesNo = 0;
+    }
+
+
+    if(yesNo == 1){
+
+
+        var buf = new Buffer(data.SignPassword);
+        var str = buf.toString("binary");
+        var password = crypto.createHash("md5").update(str).digest("hex");
+
+        var sqlString ='update user set password=? where email=?';
+        var sqlParameter = [password,data.email];
+
+        query(sqlString,sqlParameter,function(err,vals,files){
+            if(err){
+                callback('error');
+            }else{
+                callback(vals);
+            }
+        });
+    }
+};
 module.exports = loginSignManage;
 

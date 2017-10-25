@@ -147,6 +147,10 @@ function signUser(){
                         'top':'38px'
                     });
                 }
+                if(data.type == 4){
+                    alert("注册成功");
+                    location.href = '/login';
+                }
             }
         });
     }
