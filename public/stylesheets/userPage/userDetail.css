@@ -3,3 +3,10 @@
     padding: 0px;
     font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
 }
+.page-content-div{
+    width: 1160px;
+    margin: 0 auto;
+}
+.good-up-load{
+    min-height: 500px;
+}

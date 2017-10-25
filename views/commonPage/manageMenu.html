@@ -1,0 +1,50 @@
+<style>
+    .manage-menu-div{
+        height: 60px;
+        border-bottom: 1px solid #cccccc;
+    }
+    .manage-menu-one{
+        line-height: 60px;
+        padding: 0 10px;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 10px;
+    }
+    .manage-img{
+        height: 30px;
+        width: 30px;
+        background: url("/public/images/common/web_icon.png");
+        background-size: 430px auto;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .up-load-img{
+        background-position: -375px -214px;
+    }
+    .self-manage-img{
+        background-position: -125px -22px;
+    }
+    .manage-menu-one-text{
+        font-size: 18px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0px;
+    }
+    .scale-animate{
+        transition: all 0.2s linear;
+    }
+    .scale-animate:hover{
+        transform: scale(1.1);
+    }
+</style>
+<div class="manage-menu-div">
+    <div id="selfManage" class="manage-menu-one scale-animate">
+        <div class="manage-img self-manage-img"></div>
+        <span class="manage-menu-one-text">个人管理</span>
+    </div>
+    <div id="upLoadGood" class="manage-menu-one scale-animate">
+        <div class="manage-img up-load-img"></div>
+        <span class="manage-menu-one-text">商品上传</span>
+    </div>
+</div>

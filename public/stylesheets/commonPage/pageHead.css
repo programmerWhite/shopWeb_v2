@@ -53,6 +53,7 @@
 .log-sign-div{
     float: right;
     margin-top: 40px;
+    display: none;
 }
 .log-sign-div a{
     text-decoration: none;
