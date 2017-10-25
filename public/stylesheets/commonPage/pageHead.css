@@ -67,3 +67,8 @@
 .l-s-text:hover{
     color: #257cfd;
 }
+.user-nick-name{
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+}

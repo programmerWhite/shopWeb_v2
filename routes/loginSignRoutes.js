@@ -65,7 +65,6 @@ module.exports = function(app){
             });
         }
     });
-
     /*找回密码发送邮件*/
     app.post('/findPasswordSentEmail',function(req,res,next){
         var email = req.body.email;
@@ -100,7 +99,6 @@ module.exports = function(app){
             });
         }
     });
-
     /*注册用户*/
     app.post('/signUser',function(req,res,next){
 
@@ -143,7 +141,7 @@ module.exports = function(app){
            }
         }
     });
-
+    /*找回密码*/
     app.post('/findPassword',function(req,res,next){
         if(req.body.signEmailAuthor != req.session.sendAuthor.authorCode){
             res.writeHead(200, {'Content-Type': 'application/json'});
@@ -183,6 +181,20 @@ module.exports = function(app){
             }
         }
 
+    });
+    /*检查是否登录*/
+    app.post('/checkLogin',function (req,res,next) {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        if(!!req.session.userData){
+            res.end(JSON.stringify({
+                "type":2,
+                "userData":req.session.userData
+            }));
+        }else{
+            res.end(JSON.stringify({
+                "type":1
+            }));
+        }
     });
 };
 
@@ -233,6 +245,7 @@ function senEmail(emailUrl,req,res){
 
 }
 
+/*生成随机数*/
 function produceRandomNum(length){
     var tempString='';
     for(var i=0;i<length;i++){

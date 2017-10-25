@@ -148,8 +148,9 @@ function signUser(){
                     });
                 }
                 if(data.type == 4){
-                    alert("注册成功");
-                    location.href = '/login';
+                    noticeDiv("注册成功,自动跳转到登录页面中。。。",2000,function(){
+                        location.href = '/login';
+                    });
                 }
             }
         });

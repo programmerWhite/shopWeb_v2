@@ -41,9 +41,12 @@ module.exports = function (app) {
     });
 
     app.get('/userDetail',function (req,res,next) {
-        console.log(req.session.userData)
-        getMenuData(req,res,function(err,vals,fileds){
-            res.render('userPage/userDetail',{menuData:vals});
+        getMenuData(req, res, function (err, vals, fileds) {
+            if (!!req.session.userData) {
+                res.render('userPage/userDetail', {menuData: vals});
+            } else {
+                res.render('userPage/login', {menuData: vals});
+            }
         });
     });
 };
