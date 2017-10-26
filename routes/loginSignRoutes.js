@@ -21,7 +21,6 @@ module.exports = function(app){
                     "response": '系统异常'
                 }));
             }else{
-                console.log(data)
                 if(data.userData != 0){//登录成功，跳转到用户详情页面
                     req.session.userData = data.userData[0];
                     res.redirect('/userDetail');
@@ -164,9 +163,7 @@ module.exports = function(app){
                     'signEmailAuthor':req.body.signEmailAuthor
                 };
                 var loginCertification = new loginSign(req,res);
-                console.log(12)
                 loginCertification.findPassword(postData,function(data){
-                    console.log(data)
                     if(data == 'error'){
                         res.direction('/error');
                     }else{

@@ -3,6 +3,7 @@ var router = express.Router();
 
 var getShopData = require('./common/getShopData');
 var getMenuData = require('./common/getMenuData');
+var userInfoManage = require('./userAfterLoginData/userLoginAfterData');
 
 module.exports = function (app) {
     app.get('/', function (req, res, next) {
@@ -41,13 +42,17 @@ module.exports = function (app) {
     });
 
     app.get('/userDetail',function (req,res,next) {
-        getMenuData(req, res, function (err, vals, fileds) {
-            if (!!req.session.userData) {
-                res.render('userPage/userDetail',{menuData:vals});
-            } else {
-                res.redirect('/login');
-            }
-        });
+        if (!!req.session.userData) {
+            var userManage = new userInfoManage(req,res);
+            userManage.userInfoManage(function(data){
+                res.render('userPage/userDetail',{
+                    menuData:data.menu,
+                    userInfo:data.userInfo[0]
+                });
+            });
+        } else {
+            res.redirect('/login');
+        }
     });
 };
 

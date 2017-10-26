@@ -3,7 +3,6 @@
  */
 $(function(){
     var data = JSON.parse($('textarea').text());
-    console.log(data)
 
     for(var i=0;i<data.length;i++){
         var domObj = $('<div>'+data[i].goodsContent+'</div>');

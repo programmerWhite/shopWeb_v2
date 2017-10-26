@@ -34,7 +34,6 @@ function sentAuthorEmail(){
             data:{"email":email},
             dataType: "json",
             success: function(data){
-                console.log(data);
                 if(data.type == 2 || data.type == 1 || data.type == 0){
                     var noticeError = $('<span class="notice-error">'+data.response+'</span>');
                     $('#findPasswordEmail').after(noticeError);
@@ -120,7 +119,6 @@ function findPassword(){
             data:postData,
             dataType: "json",
             success: function(data){
-                console.log(data);
                 if(data.type == 1){
                     noticeDiv("密码修改成功",2000,function(){
                         location.href = '/login';

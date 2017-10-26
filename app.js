@@ -36,12 +36,14 @@ app.use('/public',express.static('public'));
 
 //app.use(express.static(path.join(__dirname, 'public')));
 
-var index = require('./routes/admin');
-index(app);
+var admin = require('./routes/admin');
+admin(app);
 var users = require('./routes/users');
 users(app);
 var loginSign = require('./routes/loginSignRoutes');
 loginSign(app);
+var userData = require('./routes/userData');
+userData(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

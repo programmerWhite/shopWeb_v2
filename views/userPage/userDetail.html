@@ -14,9 +14,31 @@
     <div class="page-content-div">
         <%include ../commonPage/manageMenu.html %>
         <div class="self-info-manage">
-            <p></p>
             <div class="self-info-line">
-                <span class="d"></span>
+                <p class="welcome-label">欢迎回来，
+                    <span class="user-nick-name-text"></span>
+                </p>
+            </div>
+            <div class="user-manage-line">
+                <span class="user-info-label">用户名:</span>
+                <span class="user-data-label"><%= userInfo.userName %></span>
+            </div>
+            <div class="user-manage-line">
+                <span class="user-info-label">邮箱:</span>
+                <span class="user-data-label"><%= userInfo.email %></span>
+            </div>
+            <div class="user-manage-line">
+                <span class="user-info-label">昵称:</span>
+                <input type="text" value="<%= userInfo.nickName %>" class="nick-input">
+                <span class="save-nick-name">保存</span>
+            </div>
+            <div class="user-manage-line">
+                <span class="user-info-label">最大上传数量:</span>
+                <span class="user-data-label"><%= userInfo.maxUpNum %></span>
+            </div>
+            <div class="user-manage-line">
+                <span class="user-info-label">剩余上传数量:</span>
+                <span class="user-data-label"><%= userInfo.hadUpNum %></span>
             </div>
         </div>
     </div>

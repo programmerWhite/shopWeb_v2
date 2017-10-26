@@ -8,3 +8,42 @@
     margin: 0 auto;
     min-height: 500px;
 }
+.welcome-label{
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+}
+.user-nick-name-text{
+    color: #f64141;
+}
+.user-manage-line{
+    height: 40px;
+    line-height: 40px;
+}
+.user-info-label{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    font-size: 14px;
+    text-align: right;
+}
+.nick-input{
+    width: 200px;
+    height: 30px;
+    border:1px solid #cccccc;
+    border-radius: 8px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.nick-input:focus{
+    border-color: #308dfe;
+}
+.save-nick-name{
+    font-size: 14px;
+    color: #308dfe;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.save-nick-name:hover{
+    text-decoration: underline;
+}

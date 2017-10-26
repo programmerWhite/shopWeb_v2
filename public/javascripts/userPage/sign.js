@@ -36,7 +36,6 @@ function sentAuthorEmail(){
             data:{"email":email},
             dataType: "json",
             success: function(data){
-                console.log(data);
                 if(data.type == 2 || data.type == 1 || data.type == 0){
                     var noticeError = $('<span class="notice-error">'+data.response+'</span>');
                     $('#email').after(noticeError);
@@ -131,14 +130,13 @@ function signUser(){
             'SignPassword':SignPassword,
             'againPassword':againPassword,
             'InvitationCode':InvitationCode
-        }
+        };
         $.ajax({
             type: "POST",
             url: "/signUser",
             data:postData,
             dataType: "json",
             success: function(data){
-                console.log(data);
                 if(data.type == 2 || data.type == 1 || data.type == 0){
                     var noticeError = $('<span class="notice-error">'+data.response+'</span>');
                     $('#email').after(noticeError);
