@@ -16,6 +16,6 @@ function checkLoginStatus() {
                 $('.log-sign-div').html('<a href="/userDetail" class="user-nick-name">'+data.userData.nickName+'</a>，你好');
             }
             $('.log-sign-div').show();
-        }
+        },async:false
     });
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="一个人,yigeren,yi-ge-ren,导购,推荐">
+    <meta name="description" content="世上最艰难的工作是什么？思想。凡是值得思想的事情，没有不是人思考过的；我们必须做的只是试图重新加以思考而已。给你提供最好。一个人的承诺">
+    <link rel="shortcut icon" href="/public/images/index/Favicon.ico" mce_href=images/common/Favicon.ico""  type="image/x-icon"/>
+    <title>一个人</title>
+    <link rel="stylesheet" href="/public/stylesheets/userPage/uploadGood.css">
+</head>
+<body>
+<%include ../commonPage/pageHead.html %>
+<div class="page-all-div">
+    <div class="page-content-div">
+        <%include ../commonPage/manageMenu.html %>
+        <div class="up-load-outer-div">
+            <div class="style-line">
+                <span class="text-label">商品名：</span>
+                <input type="text" class="input-style" id="goodName">
+                <p class="text-desc-label">
+                    尽量做到清晰的表达商品的内容信息，不要过于太长。
+                </p>
+            </div>
+            <div class="style-line">
+                <span class="text-label">购买地址：</span>
+                <input type="text" class="input-style" placeholder="淘宝购买跳转地址" id="buyUrl">
+                <p class="text-desc-label">
+                    淘宝页面的跳转地址，方便用户直接前往对应的页面查看购买商品。
+                </p>
+            </div>
+            <div class="style-line">
+                <span class="text-label">优惠券地址：</span>
+                <input type="text" class="input-style" placeholder="优惠券领取跳转地址" id="couponUrl">
+                <p class="text-desc-label">
+                    如果此商品有对应的优惠券或者打折券，请将领取优惠券或者打折券的地址放在此处，方面用户点击，领取优惠券。
+                </p>
+            </div>
+            <div class="style-line">
+                <span class="text-label">价格：</span>
+                <input type="text" class="input-style" placeholder="价格" id="prise">
+                <p class="text-desc-label">
+                    请填入商品打折后，或者优惠券后的价格信息。后的信息、后的信息、后的信息。
+                </p>
+            </div>
+            <div class="style-line">
+                <span class="text-label">是否包邮：</span>
+                <select class="select-style" id="expressCharge">
+                    <option value="1">包邮</option>
+                    <option value="2">不包邮</option>
+                </select>
+            </div>
+            <div class="style-line">
+                <span class="text-label">图片：</span>
+                <div class="picture-div">
+                    <div class="up-load-label-img"></div>
+                    <p class="up-load-label">点击加图</p>
+                </div>
+                <input type="text" class="input-style" placeholder="图片地址" id="picture-url">
+                <span class="text-button">提交</span>
+                <p class="text-desc-label">
+                    这里可以上传本地照片，也可以使用图片地址的方式上传图片，图片的地址请放在下面的输入框里面。
+                </p>
+            </div>
+            <div class="style-line">
+                <span class="text-label">商品描述：</span>
+                <p class="text-desc-label">
+                    * 请在这里详细的表述你提交的商品，最好能够客观的带上自己的评价信息。放在用户购买作为参考信息。或者给出一定的指导下意见。
+                </p>
+                <div class="good-desc-div" contenteditable="true"></div>
+            </div>
+            <div class="save-button scale-animate">提交保存</div>
+        </div>
+    </div>
+</div>
+<%include ../commonPage/foot.html %>
+</body>
+<script src="/public/javascripts/userPage/uploadGood.js" type="application/javascript"></script>
+</html>

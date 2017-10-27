@@ -1,0 +1,107 @@
+*{
+    margin:0px;
+    padding: 0px;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+}
+.page-content-div{
+    width: 1160px;
+    margin:0 auto;
+}
+.up-load-outer-div{
+    margin:20px 10px;
+}
+.text-label{
+    font-size: 14px;
+    line-height: 30px;
+    margin-top: 20px;
+    display: block;
+}
+.input-style{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 400px;
+    border-radius: 10px;
+    border:1px solid #cccccc;
+    margin-left: 20px;
+}
+.input-style:focus{
+    border-color:#70b0fe ;
+}
+.select-style{
+    width: 80px;
+    height: 30px;
+    border:1px solid #cccccc;
+    margin-left: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.select-style option{
+    line-height: 30px;
+    height: 30px;
+}
+.picture-div{
+    height: 150px;
+    width: 150px;
+    border:1px solid #cccccc;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.good-desc-div{
+    width: 860px;
+    height: 400px;
+    border:1px solid #cccccc;
+    margin-left: 20px;
+    padding: 10px;
+    overflow: scroll;
+}
+.save-button{
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background-color: #5da6fe;
+    margin:30px 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.scale-animate{
+    transition: all 0.2s linear;
+}
+.scale-animate:hover{
+    transform: scale(1.1);
+}
+.text-button{
+    color: #5da6fe;
+    font-size: 14px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.text-button:hover{
+    text-decoration: underline;
+}
+.text-desc-label{
+    font-size: 12px;
+    color: #666666;
+    margin-left: 20px;
+    line-height: 30px;
+}
+.up-load-label{
+    text-align: center;
+    margin-top: 0px;
+    font-size: 13px;
+    color: #cccccc;
+}
+.up-load-label-img{
+    height: 40px;
+    width: 50px;
+    margin:10px auto;
+    margin-top: 40px;
+    background: url("/public/images/common/web_icon.png");
+    background-position: -530px -510px;
+
+}

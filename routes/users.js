@@ -54,6 +54,16 @@ module.exports = function (app) {
             res.redirect('/login');
         }
     });
+    app.get('/uploadGood',function (req,res,next) {
+        if (!!req.session.userData) {
+            getMenuData(req,res,function(err,vals,fileds){
+                res.render('userPage/uploadGood',{menuData:vals});
+            });
+        } else {
+            res.redirect('/login');
+        }
+
+    })
 };
 
 function indexPage(req, res, next){

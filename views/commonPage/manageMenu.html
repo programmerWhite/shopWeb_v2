@@ -37,14 +37,23 @@
     .scale-animate:hover{
         transform: scale(1.1);
     }
+    .manage-menu-div a{
+        color: #333333;
+        text-decoration: none;
+    }
 </style>
 <div class="manage-menu-div">
-    <div id="selfManage" class="manage-menu-one scale-animate">
-        <div class="manage-img self-manage-img"></div>
-        <span class="manage-menu-one-text">个人管理</span>
-    </div>
-    <div id="upLoadGood" class="manage-menu-one scale-animate">
-        <div class="manage-img up-load-img"></div>
-        <span class="manage-menu-one-text">商品上传</span>
-    </div>
+    <a href="/userDetail">
+        <div id="selfManage" class="manage-menu-one scale-animate">
+            <div class="manage-img self-manage-img"></div>
+            <span class="manage-menu-one-text">个人管理</span>
+        </div>
+    </a>
+    <a href="/uploadGood">
+        <div id="upLoadGood" class="manage-menu-one scale-animate">
+            <div class="manage-img up-load-img"></div>
+            <span class="manage-menu-one-text">商品上传</span>
+        </div>
+    </a>
+
 </div>
