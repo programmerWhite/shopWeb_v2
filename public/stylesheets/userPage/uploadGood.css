@@ -103,5 +103,65 @@
     margin-top: 40px;
     background: url("/public/images/common/web_icon.png");
     background-position: -530px -510px;
-
+}
+.add-type-new{
+    width: 400px;
+    position: fixed;
+    left:50%;
+    top:50%;
+    margin-left: -200px;
+    margin-top: -115px;
+    z-index: 10;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    display: none;
+}
+.shade-div{
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+    display: none;
+}
+.add-new-type{
+    font-size: 20px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+.input-style-add-type{
+    border:1px solid #cccccc;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 200px;
+}
+.add-new-type-label{
+    margin-left: 0px;
+}
+.add-new-type-button,
+.cancel-new-type-button{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    width: 100px;
+    background-color: #5da6fe;
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 12px;
+}
+.had-type-name-text{
+    margin-right: 10px;
+    font-size: 12px;
+}
+.had-type-text{
+    margin-bottom: 20px;
 }

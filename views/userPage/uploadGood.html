@@ -43,6 +43,13 @@
                 </p>
             </div>
             <div class="style-line">
+                <span class="text-label">类型：</span>
+                <select class="select-style" id="goodType">
+
+                </select>
+                <span class="text-button">添加新类型</span>
+            </div>
+            <div class="style-line">
                 <span class="text-label">是否包邮：</span>
                 <select class="select-style" id="expressCharge">
                     <option value="1">包邮</option>
@@ -64,7 +71,7 @@
             <div class="style-line">
                 <span class="text-label">商品描述：</span>
                 <p class="text-desc-label">
-                    * 请在这里详细的表述你提交的商品，最好能够客观的带上自己的评价信息。放在用户购买作为参考信息。或者给出一定的指导下意见。
+                    * 请在这里详细的表述你提交的商品，最好能够客观的带上自己的评价信息。放在用户购买作为参考信息。或者给出一定的指导意见。
                 </p>
                 <div class="good-desc-div" contenteditable="true"></div>
             </div>
@@ -72,6 +79,20 @@
         </div>
     </div>
 </div>
+<div class="add-type-new">
+    <P class="add-new-type">添加一个新类型</P>
+    <p class="text-desc-label add-new-type-label">
+        已有的商品类型:
+    </p>
+    <div class="had-type-text"></div>
+    <input class="input-style-add-type" type="text" placeholder="新类型" id="newGoodType">
+    <p class="text-desc-label add-new-type-label">
+        类型请不要重复添加，类型需要管理员审核后才能在前台看到。
+    </p>
+    <div class="add-new-type-button scale-animate">添加</div>
+    <div class="cancel-new-type-button scale-animate">取消</div>
+</div>
+<div class="shade-div"></div>
 <%include ../commonPage/foot.html %>
 </body>
 <script src="/public/javascripts/userPage/uploadGood.js" type="application/javascript"></script>

@@ -25,4 +25,20 @@ module.exports = function(app){
             }
         });
     });
+    app.post('/getGoodType',function (req,res,next) {
+        var userDataObjTemp = new userDataObj(req,res);
+        userDataObjTemp.getGoodType(function (data) {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify(data));
+        });
+    });
+    app.post('/addNewType',function (req,res,next) {
+
+        var userDataObjTemp = new userDataObj(req,res);
+        userDataObjTemp.addNewType(function (data) {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify(data));
+        });
+
+    });
 };

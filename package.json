@@ -13,10 +13,10 @@
     "express": "~4.15.2",
     "morgan": "~1.8.1",
     "serve-favicon": "~2.4.2",
-    "mysql":"",
-    "promise":"",
-    "crypto":"",
-    "express-session":"",
-    "nodemailer":"v0.7.1"
+    "mysql": "",
+    "promise": "",
+    "crypto": "",
+    "express-session": "",
+    "nodemailer": "v0.7.1"
   }
 }

@@ -4,7 +4,7 @@
 var query = require('./DBconnect');
 
 function getMenuData(req,res,callback){
-    var tempSqlString = 'SELECT typeName,typeNum FROM goodtype';
+    var tempSqlString = 'SELECT typeName,typeNum FROM goodtype where auditing=1';
     query(tempSqlString,"",function(err,vals,fileds) {
         if(!!err){
             res.writeHead(200, {'Content-Type': 'application/json'});

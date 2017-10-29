@@ -59,11 +59,12 @@ function noticeDiv(text,time,callBack){
         'text-align':'center',
         'border-radius':'6px',
         'line-height':'30px',
-        'position':'absolute',
+        'position':'fixed',
         'left':'50%',
         'top':'50%',
         'margin-left':'-150px',
-        'margin-top':'-100px'
+        'margin-top':'-100px',
+        'z-index':100
     })
     $('.animate-notice-div').animate().stop();
     $('.animate-notice-div').text(text);
