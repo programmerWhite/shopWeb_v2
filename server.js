@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+var http = require('http');
 
 var app = express();
 
@@ -14,10 +15,10 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(cookieParser('wy910823'));
 app.use(session({
-  secret: 'keyboard cat',
-  resave:true,
-  saveUninitialized:true,
-  cookie: {maxAge: 1000*60*30}
+    secret: 'keyboard cat',
+    resave:true,
+    saveUninitialized:true,
+    cookie: {maxAge: 1000*60*30}
 }));
 
 // view engine setup
@@ -47,20 +48,25 @@ userData(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+
+
+http.createServer(app).listen(18080, function(){
+    console.log('Express server listening on port 18080,'+new Date());
+});
